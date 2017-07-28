@@ -17,9 +17,16 @@
             })();
         </script>
         <div class="site-info">
+          <?php printf( __( 'Powered by: %2$s.'), 'Wordpress', '<a href="http://wordpress.org/" rel="nofollow">Wordpress</a>' ); ?>
+          <?php echo "&nbsp"?>
+          <?php printf( __( 'Theme: %2$s.'), 'DW Minion', '<a href="http://www.designwall.com/" rel="nofollow">DW Minion</a>' ); ?>
+          <?php echo "&nbsp"?>
+          <?php esc_attr_e('Copyright ©', 'preference-lite'); ?>
+          <?php esc_attr_e(date('Y')); ?>
+          <a href="http://www.binsky.net/">Binsky</a>
+          <?php esc_attr_e('. All rights reserved.', 'preference-lite'); ?>
+          <?php echo "&nbsp"?>
           <?php do_action( 'dw_minion_credits' ); ?>
-          <a href="http://wordpress.org/" title="<?php esc_attr_e( 'A Semantic Personal Publishing Platform', 'dw-minion' ); ?>" rel="generator"><?php printf( __( 'Proudly powered by %s', 'dw-minion' ), 'WordPress' ); ?></a><span class="sep">.</span>
-          <?php printf( __( 'Theme: %1$s by %2$s.', 'dw-minion' ), 'DW Minion', '<a href="http://www.designwall.com/" rel="nofollow">DesignWall</a>' ); ?>
         </div>
       </div>
     </footer>
