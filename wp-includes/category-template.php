@@ -703,13 +703,13 @@ function wp_list_categories( $args = '' ) {
  */
 function wp_tag_cloud( $args = '' ) {
 	$defaults = array(
-		'smallest' => 8, 'largest' => 22, 'unit' => 'pt', 'number' => 45,
-		'format' => 'flat', 'separator' => "\n", 'orderby' => 'name', 'order' => 'ASC',
+		'smallest' => 8, 'largest' => 22, 'unit' => 'pt', 'number' => 60,
+		'format' => 'flat', 'separator' => "\n", 'orderby' => 'rand', 'order' => 'RAND',
 		'exclude' => '', 'include' => '', 'link' => 'view', 'taxonomy' => 'post_tag', 'post_type' => '', 'echo' => true
 	);
 	$args = wp_parse_args( $args, $defaults );
 
-	$tags = get_terms( $args['taxonomy'], array_merge( $args, array( 'orderby' => 'count', 'order' => 'DESC' ) ) ); // Always query top tags
+	$tags = get_terms( $args['taxonomy'], array_merge( $args, array( 'orderby' => 'count', 'order' => 'RAND' ) ) ); // Always query top tags
 
 	if ( empty( $tags ) || is_wp_error( $tags ) )
 		return;
