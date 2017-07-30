@@ -3,19 +3,6 @@
     </div>
     <footer id="colophon" class="site-footer" role="contentinfo">
       <div class="container">
-        <script>
-            (function(){
-                var bp = document.createElement('script');
-                var curProtocol = window.location.protocol.split(':')[0];
-                if (curProtocol === 'https') {
-                    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
-                } else {
-                    bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-                }
-                var s = document.getElementsByTagName("script")[0]; 
-                s.parentNode.insertBefore(bp, s);
-            })();
-        </script>
         <div class="site-info">
           <?php printf( __( 'Powered by: %2$s.'), 'Wordpress', '<a href="http://wordpress.org/" rel="nofollow">Wordpress</a>' ); ?>
           <?php echo "&nbsp"?>
@@ -33,5 +20,18 @@
   </div>
 </div>
 <?php wp_footer(); ?>
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
 </body>
 </html>

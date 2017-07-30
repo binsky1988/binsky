@@ -263,32 +263,6 @@ if(!function_exists('baidu_check_record')){
     }
 }
 
-////输出百度自动推送js代码
-//if(!function_exists('bdPushData')){
-//    function bdPushData() {
-//        if ($_SERVER['HTTPS'] != "on") {
-//            $currentUrl = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER["REQUEST_URI"];
-//        } else {
-//            $currentUrl = 'https://'.$_SERVER['HTTP_HOST'].$_SERVER["REQUEST_URI"];
-//        }
-//
-//        //判断是否是未收录页面，并且当前页面是否等于正规url地址(get_premalink)
-//        if(baidu_check_record(get_permalink()) == 0 && $currentUrl == get_permalink()) {
-//            echo "<script>(function(){
-//                var bp = document.createElement('script');
-//                var curProtocol = window.location.protocol.split(':')[0];
-//                if (curProtocol === 'https') {
-//                    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-//                } else {
-//                    bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-//                }
-//                var s = document.getElementsByTagName('script')[0];
-//                s.parentNode.insertBefore(bp, s);
-//                })();</script>";
-//        }
-//    }
-//}
-
 function baidu_record() {
     if(baidu_check_record(get_permalink()) == 1) {
         echo '<a target="_blank" title="点击查看" rel="external nofollow" href="http://www.baidu.com/s?wd='.get_the_title().'">百度已收录</a>';
