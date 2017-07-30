@@ -1,0 +1,3 @@
+Disallow: 
+Sitemap: http://www.binsky.net/xmlmap.php
+Sitemap: http://www.binsky.net/index.php/sitemap-html
