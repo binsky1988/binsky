@@ -155,7 +155,7 @@ function baidu_push_initiative($post_ID){
         if (empty($post_ID) || empty($wpabcd_tuisong_site) || empty($wpabcd_tuisong_token)) {
             return;
         }
-        $api = 'http://data.zz.baidu.com/urls?site='.$wpabcd_tuisong_site.'&token='.$wpabcd_tuisong_token;//百度官方的api
+        $api = 'https://data.zz.baidu.com/urls?site='.$wpabcd_tuisong_site.'&token='.$wpabcd_tuisong_token;//百度官方的api
         if( $post->post_status = "publish" ) {//仅限已发布的文章
             $url = get_permalink($post_ID);
             $ch = curl_init();
@@ -244,7 +244,7 @@ if(!function_exists('baidu_check_record')){
         $post_id = ( null === $post_id ) ? get_the_ID() : $post_id;
         $baidu_record  = get_post_meta($post_id,'baidu_record',true);
         if( $baidu_record != 1){
-            $url='http://www.baidu.com/s?wd='.$url;
+            $url='https://www.baidu.com/s?wd='.$url;
             $curl=curl_init();
             curl_setopt($curl,CURLOPT_URL,$url);
             curl_setopt($curl,CURLOPT_RETURNTRANSFER,1);
@@ -265,9 +265,9 @@ if(!function_exists('baidu_check_record')){
 
 function baidu_record() {
     if(baidu_check_record(get_permalink()) == 1) {
-        echo '<a target="_blank" title="点击查看" rel="external nofollow" href="http://www.baidu.com/s?wd='.get_the_title().'">百度已收录</a>';
+        echo '<a target="_blank" title="点击查看" rel="external nofollow" href="https://www.baidu.com/s?wd='.get_the_title().'">百度已收录</a>';
     } else {
-        echo '<a style="color:red;" rel="external nofollow" title="点击提交，谢谢您！" target="_blank" href="http://zhanzhang.baidu.com/sitesubmit/index?sitename='.get_permalink().'">百度未收录</a>';
+        echo '<a style="color:red;" rel="external nofollow" title="点击提交，谢谢您！" target="_blank" href="https://zhanzhang.baidu.com/sitesubmit/index?sitename='.get_permalink().'">百度未收录</a>';
         baidu_push_initiative(get_the_ID());
     }
 }
@@ -299,7 +299,7 @@ function thumb_img($soContent){
     } else {
         // 使用bing随机图片
         $bingimg= bingImgFetch();
-        $pic = "http://www.bing.com";
+        $pic = "https://www.bing.com";
         $pic .=  $bingimg['url'];
         $pic_date = $bingimg['date'];
         echo "<span id = 'thumb'>";
@@ -317,7 +317,7 @@ function bingImgFetch(){
     $random1 = rand(0, 16);
     $random2 = rand(1, 8);
     $ch = curl_init();
-    $url_send = sprintf("http://www.bing.com/HPImageArchive.aspx?format=js&idx=%s&n=%s", $random1, $random2);
+    $url_send = sprintf("https://www.bing.com/HPImageArchive.aspx?format=js&idx=%s&n=%s", $random1, $random2);
     curl_setopt($ch, CURLOPT_URL, $url_send);
     curl_setopt($ch, CURLOPT_HTTPHEADER, array(
         'User-Agent: Mozilla/5.0 (Windows NT 6.2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.137 Safari/537.36'
@@ -326,7 +326,7 @@ function bingImgFetch(){
     $re = curl_exec($ch);
     curl_close($ch);
     $re = json_decode($re,1);
-    $re2 = json_decode(file_get_contents('http://cn.bing.com/cnhp/coverstory/'),1);
+    $re2 = json_decode(file_get_contents('https://cn.bing.com/cnhp/coverstory/'),1);
     return array(
         'url' => str_replace('1920x1080','1366x768',$re['images'][$random2-1]['url']),
         'date' => date('j',strtotime($re['images'][$random2-1]['enddate'])),
@@ -341,7 +341,7 @@ function bingImgFetch(){
  */
 function hc_cdn_callback($buffer) 
 {
-    return str_replace('googleapis.com', 'lug.ustc.edu.cn', $buffer);
+    return str_replace('lug.ustc.edu.cn', 'lug.ustc.edu.cn', $buffer);
     
 }
 
