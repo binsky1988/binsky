@@ -356,3 +356,24 @@ function hc_buffer_end()
 }
 add_action('init', 'hc_buffer_start');
 add_action('shutdown', 'hc_buffer_end');
+
+
+/**
+ * 全站ssl支持
+ *
+ */
+add_filter('get_header', 'fanly_ssl');
+function fanly_ssl(){
+    if( is_ssl() ){
+        function fanly_ssl_main ($content){
+            $siteurl = get_option('siteurl');
+            $upload_dir = wp_upload_dir();
+            $content = str_replace( 'http:'.strstr($siteurl, '//'), 'https:'.
+strstr($siteurl, '//'), $content);
+            $content = str_replace( 'http:'.strstr($upload_dir['baseurl'], 
+'//'), 'https:'.strstr($upload_dir['baseurl'], '//'), $content);
+            return $content;
+        }
+        ob_start("fanly_ssl_main");
+    }
+}
